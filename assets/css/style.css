@@ -500,4 +500,19 @@ p {
   }
 }
 
+/* .search {
+  border: 1px solid black;
+  border-radius: px;;
+} */
+
+.search h5 {
+  background-color: black;
+  color: white;
+}
+
+.search button {
+  display: inline-block;
+  width: 100%;
+}
+
 

@@ -8,12 +8,12 @@ function getUserRepos(user) {
             console.log(data)
             let main = document.querySelector('main');
             console.log()
-            for (let i = 0; i < data.length; i++) {
-                let div = document.createElement('div')
-                div.textContent = data[i].name
-                console.log(data[i].name)
-                main.appendChild(div)
-            }
+            // for (let i = 0; i < data.length; i++) {
+            //     let div = document.createElement('div')
+            //     div.textContent = data[i].name
+            //     console.log(data[i].name)
+            //     main.appendChild(div)
+            // }
         })
         .catch(err => {
             console.log(err)
