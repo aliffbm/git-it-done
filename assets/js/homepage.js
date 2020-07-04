@@ -80,6 +80,7 @@ function getUserRepos(user) {
               }
         })
         .then(data => {
+            console.log(data)
             displayRepos(data, user)
             let main = document.querySelector('main');
             // for (let i = 0; i < data.length; i++) {
@@ -93,5 +94,11 @@ function getUserRepos(user) {
             console.log(err)
         })
 }
+
+var getFeaturedRepos = function(language) {
+    var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
+  
+    fetch(apiUrl);
+  };
 
 
