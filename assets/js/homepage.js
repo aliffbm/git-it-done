@@ -25,7 +25,7 @@ var displayRepos = function (repos, searchTerm) {
     if (repos.length === 0) {
         repoContainerEl.textContent = "No repositories found.";
         return;
-      }
+    }
 
     repoContainerEl.textContent = "";
     repoSearchTerm.textContent = searchTerm;
@@ -75,9 +75,9 @@ function getUserRepos(user) {
 
             if (response.ok) {
                 return response.json();
-              } else {
+            } else {
                 alert("Error: " + response.statusText);
-              }
+            }
         })
         .then(data => {
             console.log(data)
@@ -95,10 +95,27 @@ function getUserRepos(user) {
         })
 }
 
-var getFeaturedRepos = function(language) {
+var getFeaturedRepos = function (language) {
     var apiUrl = "https://api.github.com/search/repositories?q=" + language + "+is:featured&sort=help-wanted-issues";
-  
-    fetch(apiUrl);
-  };
+
+    fetch(apiUrl).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (data) {
+                displayRepos(data.items, language);
+            });
+        } else {
+            alert("Error: " + response.statusText);
+        }
+    });
+};
+
+let languageButtons = document.querySelector('#language-buttons');
+languageButtons.addEventListener('click', function(e) {
+    let lang = e.target.getAttribute('data-language');
+    if(lang){
+        getFeaturedRepos(lang);
+        repoContainerEl.textContent = '';
+    }
+})
 
 
